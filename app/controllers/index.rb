@@ -11,10 +11,6 @@ post '/login' do
 
 end
 
-get '/logout'
-
-do
-
-get '/round/new'
+get '/logout' do
 
 end
