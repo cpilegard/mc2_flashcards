@@ -43,6 +43,7 @@ end
 
 get '/round/card/:card_id' do
   if params[:card_id].to_i > Card.last.id
+    @number_correct = session[:correct].to_i
     @gameover = true
     session.clear
     erb :card_page
@@ -51,10 +52,13 @@ get '/round/card/:card_id' do
       card = Card.find(params[:card_id].to_i - 1)
       if card.answer == session[:guess]
         @correct = true
+        session[:correct] = session[:correct].to_i + 1
       else
         @correct = false
         @answer = card.answer
       end
+      @number_correct = session[:correct].to_i
+      @number_incorrect = card.id - @number_correct
     end
     @card = Card.find(params[:card_id].to_i)
     erb :card_page

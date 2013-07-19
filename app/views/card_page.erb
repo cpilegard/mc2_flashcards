@@ -11,6 +11,11 @@
     <% elsif @correct == false%>
     <p>WRONG!: <%= @answer %></p>
     <% end %>
+    <br><br>
+    <% if @number_correct %>
+      <p>Correct: <%= @number_correct %></p>
+      <p>Incorrect: <%= @number_incorrect %></p>
+    <% end %>
 
   <% else %>
     <h3>Game Over</h3>
