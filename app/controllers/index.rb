@@ -43,8 +43,9 @@ end
 
 get '/round/card/:card_id' do
   if params[:card_id].to_i > Card.last.id
-    @number_correct = session[:correct].to_i
     @gameover = true
+    @number_correct = session[:correct].to_i
+    @number_incorrect = Card.find(params[:card_id].to_i - 1).id - @number_correct
     session.clear
     erb :card_page
   else
