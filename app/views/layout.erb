@@ -18,6 +18,13 @@
   <title></title>
 </head>
 <body>
+  <div class='container'>
+    <% if @user %>
+    <a href='/logout'>Log Out (<%= @user.username %>)</a>
+    <% else %>
+    <a href='/user/login'>Log In</a>
+    <% end %>
+  </div>
   <%= yield %>
 </body>
 </html>
