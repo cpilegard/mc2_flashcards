@@ -1,0 +1,18 @@
+<div class="container">
+  <% unless @gameover %>
+    <h1><%= @card.question %></h1>
+    <form action=<%= '/round/card/' + @card.id.to_s %> method='post'>
+      <input type='text' name='guess'>
+      <input type='submit'>
+    </form>
+
+    <% if @correct %>
+    <p>Correct!</p>
+    <% elsif @correct == false%>
+    <p>WRONG!: <%= @answer %></p>
+    <% end %>
+
+  <% else %>
+    <h3>Game Over</h3>
+  <% end %>
+</div>

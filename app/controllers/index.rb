@@ -38,5 +38,31 @@ get '/logout' do
 end
 
 get '/round/new' do
+  redirect to('/round/card/1')
+end
 
+get '/round/card/:card_id' do
+  if params[:card_id].to_i > Card.last.id
+    @gameover = true
+    session.clear
+    erb :card_page
+  else
+    if session[:card_id]
+      card = Card.find(params[:card_id].to_i - 1)
+      if card.answer == session[:guess]
+        @correct = true
+      else
+        @correct = false
+        @answer = card.answer
+      end
+    end
+    @card = Card.find(params[:card_id].to_i)
+    erb :card_page
+  end
+end
+
+post '/round/card/:card_id' do
+  session[:card_id] = params[:card_id].to_i
+  session[:guess] = params[:guess]
+  redirect to("/round/card/#{session[:card_id].to_i + 1}")
 end
