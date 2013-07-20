@@ -12,38 +12,8 @@
     <p>Correct!</p>
     <% elsif @correct == false%>
     <p>WRONG!: <%= @answer %></p>
-<<<<<<< HEAD
   <% end %>
-</div>
-
-
-<!-- get '/round/card/:card_id' do
-  if session[:card_id]
-      card = Card.find(params[:card_id].to_i - 1)
-      if card.answer == session[:guess]
-        @correct = true
-      else
-        @correct = false
-        @answer = card.answer
-      end
-  end
-
-  if params[:card_id].to_i > Card.last.id
-    @gameover = true
-    session.clear
-  else
-    @card = Card.find(params[:card_id].to_i)
-  end
-  
-  :erb card_page
-end -->
-=======
-    <% end %>
     <br><br>
-
-  <% else %>
-    <h3>Game Over</h3>
-  <% end %>
 
   <% if @number_correct %>
     <p>Correct: <%= @number_correct %></p>
@@ -54,4 +24,4 @@ end -->
     <a href='/'>Home</a>
   <% end %>
 </div>
->>>>>>> 61b9074fe6eda7c500883364c590d9c1089177b0
+

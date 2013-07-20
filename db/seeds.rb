@@ -1,4 +1,4 @@
-rake Deck.create({title: "mc2 members"})
+Deck.create({title: "mc2 members"})
 deck = Deck.all.first
 id = deck.id
 Card.create({question: "He signs a capella", answer: "Clint", deck_id: id})
