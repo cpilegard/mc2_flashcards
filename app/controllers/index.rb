@@ -42,23 +42,24 @@ get '/round/new' do
 end
 
 get '/round/card/:card_id' do
+  if session[:card_id]
+    card = Card.find(params[:card_id].to_i - 1)
+    if card.answer == session[:guess]
+      @correct = true
+    else
+      @correct = false
+      @answer = card.answer
+    end
+  end
+
   if params[:card_id].to_i > Card.last.id
     @gameover = true
     session.clear
-    erb :card_page
   else
-    if session[:card_id]
-      card = Card.find(params[:card_id].to_i - 1)
-      if card.answer == session[:guess]
-        @correct = true
-      else
-        @correct = false
-        @answer = card.answer
-      end
-    end
     @card = Card.find(params[:card_id].to_i)
-    erb :card_page
   end
+
+  erb :card_page
 end
 
 post '/round/card/:card_id' do

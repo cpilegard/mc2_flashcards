@@ -5,14 +5,34 @@
       <input type='text' name='guess'>
       <input type='submit'>
     </form>
-
-    <% if @correct %>
-    <p>Correct!</p>
-    <% elsif @correct == false%>
-    <p>WRONG!: <%= @answer %></p>
-    <% end %>
-
   <% else %>
     <h3>Game Over</h3>
   <% end %>
+  <% if @correct %>
+    <p>Correct!</p>
+    <% elsif @correct == false%>
+    <p>WRONG!: <%= @answer %></p>
+  <% end %>
 </div>
+
+
+<!-- get '/round/card/:card_id' do
+  if session[:card_id]
+      card = Card.find(params[:card_id].to_i - 1)
+      if card.answer == session[:guess]
+        @correct = true
+      else
+        @correct = false
+        @answer = card.answer
+      end
+  end
+
+  if params[:card_id].to_i > Card.last.id
+    @gameover = true
+    session.clear
+  else
+    @card = Card.find(params[:card_id].to_i)
+  end
+  
+  :erb card_page
+end -->
