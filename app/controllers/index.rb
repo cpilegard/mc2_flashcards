@@ -43,17 +43,22 @@ end
 
 get '/round/card/:card_id' do
   if session[:card_id]
-    card = Card.find(params[:card_id].to_i - 1)
-    if card.answer == session[:guess]
-      @correct = true
-    else
-      @correct = false
-      @answer = card.answer
+      card = Card.find(params[:card_id].to_i - 1)
+      if card.answer == session[:guess]
+        @correct = true
+        session[:correct] = session[:correct].to_i + 1
+      else
+        @correct = false
+        @answer = card.answer
+      end
+      @number_correct = session[:correct].to_i
+      @number_incorrect = card.id - @number_correct
     end
-  end
 
   if params[:card_id].to_i > Card.last.id
     @gameover = true
+    @number_correct = session[:correct].to_i
+    @number_incorrect = Card.find(params[:card_id].to_i - 1).id - @number_correct
     session.clear
   else
     @card = Card.find(params[:card_id].to_i)

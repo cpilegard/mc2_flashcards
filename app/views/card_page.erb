@@ -12,6 +12,7 @@
     <p>Correct!</p>
     <% elsif @correct == false%>
     <p>WRONG!: <%= @answer %></p>
+<<<<<<< HEAD
   <% end %>
 </div>
 
@@ -36,3 +37,21 @@
   
   :erb card_page
 end -->
+=======
+    <% end %>
+    <br><br>
+
+  <% else %>
+    <h3>Game Over</h3>
+  <% end %>
+
+  <% if @number_correct %>
+    <p>Correct: <%= @number_correct %></p>
+    <p>Incorrect: <%= @number_incorrect %></p>
+  <% end %>
+
+  <% if @gameover %>
+    <a href='/'>Home</a>
+  <% end %>
+</div>
+>>>>>>> 61b9074fe6eda7c500883364c590d9c1089177b0
