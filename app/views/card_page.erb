@@ -21,4 +21,8 @@
     <p>Correct: <%= @number_correct %></p>
     <p>Incorrect: <%= @number_incorrect %></p>
   <% end %>
+
+  <% if @gameover %>
+    <a href='/'>Home</a>
+  <% end %>
 </div>
