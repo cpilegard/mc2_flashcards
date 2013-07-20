@@ -38,7 +38,11 @@ get '/logout' do
 end
 
 get '/round/new' do
-  redirect to('/round/card/1')
+  if session[:user_id]
+    redirect to('/round/card/1')
+  else
+    redirect to('/user/login')
+  end
 end
 
 get '/round/card/:card_id' do

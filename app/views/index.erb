@@ -1,4 +1,8 @@
 <div class="container">
   <h1>Welcome to MC2 Flashcards</h1>
-  <a href='/round/new'>Start Game</a>
+  <% if @user %>
+    <a href='/round/new'>Start Game</a>
+  <% else %>
+    <h4> Please sign up or log in, asshole! </h4>
+  <% end %>
 </div>
