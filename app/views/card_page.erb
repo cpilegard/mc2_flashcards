@@ -5,17 +5,15 @@
       <input type='text' name='guess'>
       <input type='submit'>
     </form>
-
-    <% if @correct %>
-    <p>Correct!</p>
-    <% elsif @correct == false%>
-    <p>WRONG!: <%= @answer %></p>
-    <% end %>
-    <br><br>
-
   <% else %>
     <h3>Game Over</h3>
   <% end %>
+  <% if @correct %>
+    <p>Correct!</p>
+    <% elsif @correct == false%>
+    <p>WRONG!: <%= @answer %></p>
+  <% end %>
+    <br><br>
 
   <% if @number_correct %>
     <p>Correct: <%= @number_correct %></p>
@@ -26,3 +24,4 @@
     <a href='/'>Home</a>
   <% end %>
 </div>
+
