@@ -13,10 +13,16 @@ get '/user/login' do
   erb :login
 end
 
+get '/stats/' do
+  @round = Round.find(session[:round_id])
+  erb :stats_page
+end
+
 post '/user/new' do
   username = params[:username]
   password = params[:password]
-  User.create({username: username, password: password})
+  user = User.create({username: username, password: password})
+  session[:user_id] = user.id
   redirect to('/')
 end
 
@@ -48,7 +54,7 @@ end
 get '/round/card/:card_id' do
   if session[:card_id]
       card = Card.find(params[:card_id].to_i - 1)
-      if card.answer == session[:guess]
+      if card.answer.downcase == session[:guess].down
         @correct = true
         session[:correct] = session[:correct].to_i + 1
       else
@@ -64,6 +70,7 @@ get '/round/card/:card_id' do
     @number_correct = session[:correct].to_i
     @number_incorrect = Card.find(params[:card_id].to_i - 1).id - @number_correct
     session.clear
+    # redirect to("/stats/#{}")
   else
     @card = Card.find(params[:card_id].to_i)
   end
