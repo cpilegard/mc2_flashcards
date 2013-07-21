@@ -14,8 +14,8 @@ get '/user/login' do
   erb :login
 end
 
-get '/stats/' do
-  @round = Round.find(session[:round_id])
+get '/stats/:round_id' do
+  @round = Round.find(params[:round_id])
   erb :stats_page
 end
 
@@ -75,7 +75,17 @@ post "/deck/:deck_id/:card_id" do
     redirect to("/deck/#{deck.id}/#{card.id.to_i + 1}")
   else
     #Change this to handle stats page
-    session[:round] = nil
-    "Game Over"
+    correct = 0
+    incorrect = 0
+    Guess.where(round_id: session[:round]).each do |guess|
+      if guess.correct == 1
+        correct += 1
+      else
+        incorrect += 1
+      end
+    end
+    round = Round.find(session[:round])
+    Round.update(session[:round], correct: correct, incorrect: incorrect)
+    redirect to("/stats/#{session[:round]}")
   end
 end
