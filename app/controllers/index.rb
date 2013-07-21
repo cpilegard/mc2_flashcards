@@ -1,6 +1,7 @@
 get '/' do
   if session[:user_id]
     @user = User.find(session[:user_id])
+    @decks = Deck.all
   end
   erb :index
 end

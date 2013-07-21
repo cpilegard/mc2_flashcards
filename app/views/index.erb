@@ -1,7 +1,10 @@
 <div class="container">
   <h1>Welcome to MC2 Flashcards</h1>
   <% if @user %>
-    <a href='/round/new'>Start Game</a>
+    <h2>Please choose a deck</h2>
+    <% @decks.each do |deck| %>
+    	<br><a href="/round/new/<%= deck.id %>"><%= deck.title %></a>
+    <% end %>
   <% else %>
     <h4> Please sign up or log in, asshole! </h4>
   <% end %>
