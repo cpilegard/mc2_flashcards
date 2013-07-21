@@ -38,42 +38,41 @@ get '/logout' do
   redirect to('/')
 end
 
-get '/round/new' do
-  if session[:user_id]
-    redirect to('/round/card/1')
-  else
-    redirect to('/user/login')
-  end
-end
+get "/deck/:deck_id/play" do
+  @deck = Deck.find(params[:deck_id].to_i)
+  @card = Card.where(deck_id: @deck.id).first
 
-get '/round/card/:card_id' do
-  if session[:card_id]
-      card = Card.find(params[:card_id].to_i - 1)
-      if card.answer == session[:guess]
-        @correct = true
-        session[:correct] = session[:correct].to_i + 1
-      else
-        @correct = false
-        @answer = card.answer
-      end
-      @number_correct = session[:correct].to_i
-      @number_incorrect = card.id - @number_correct
-    end
-
-  if params[:card_id].to_i > Card.last.id
-    @gameover = true
-    @number_correct = session[:correct].to_i
-    @number_incorrect = Card.find(params[:card_id].to_i - 1).id - @number_correct
-    session.clear
-  else
-    @card = Card.find(params[:card_id].to_i)
-  end
+  round = Round.create({correct: 0, incorrect: 0, user_id: session[:user_id], deck_id: @deck.id})
+  session[:round] = round.id
 
   erb :card_page
 end
 
-post '/round/card/:card_id' do
-  session[:card_id] = params[:card_id].to_i
-  session[:guess] = params[:guess]
-  redirect to("/round/card/#{session[:card_id].to_i + 1}")
+get "/deck/:deck_id/:card_id" do
+  @deck = Deck.find(params[:deck_id].to_i)
+  @card = Card.find(params[:card_id].to_i)
+
+  erb :card_page
+end
+
+post "/deck/:deck_id/:card_id" do
+  answer = params[:answer]
+  round_id = session[:round]
+
+  deck = Deck.find(params[:deck_id])
+  card = Card.find(params[:card_id])
+
+  if answer == card.answer
+    Guess.create({card_id: card.id, round_id: round_id, correct: 1})
+  else
+    Guess.create({card_id: card.id, round_id: round_id, correct: 0})
+  end
+
+  if Card.where(deck_id: deck.id).last.id > card.id
+    redirect to("/deck/#{deck.id}/#{card.id.to_i + 1}")
+  else
+    #Change this to handle stats page
+    session[:round] = nil
+    "Game Over"
+  end
 end
