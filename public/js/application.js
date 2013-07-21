@@ -1,7 +1,12 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  // $('.start').on('click', function(e) {
+  // 	e.preventDefault();
+  // 	deck_id = $(this).attr('href');
+  // 	$.post('/deck/'+deck_id+'/4', function(data) {
+  // 	}).done(function(response) {
+  // 		$('.start').hide();
+  // 		$('.flashcard').css('visibility', 'visible');
+  // 		$('#question').html(response.question);
+  // 	});
+  // });
 });
