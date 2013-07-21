@@ -1,0 +1,20 @@
+<section>
+  <header id="stats_head">
+    <h1><%=Deck.find(@round.deck_id).title%> Deck Statistics<h1>
+  </header>
+  <div id="stats">
+    <span> Score: <%= (@round.correct / (@round.correct + @round.incorrect)) * 100 %> </span>
+  </div>
+  <div id="wrong_questions">
+  <% Guess.all.each do |guess| %>
+    <% if guess.round_id == @round.id %>
+      <% unless guess.correct %>
+        <% card = Card.find(guess.card_id) %>
+        <h3> <%= card.question %> </h3>
+        <p> <%= card.answer %> </p>
+      <% end %>
+    <% end %>
+  <% end %>
+
+</section>
+

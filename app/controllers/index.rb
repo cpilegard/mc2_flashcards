@@ -14,10 +14,16 @@ get '/user/login' do
   erb :login
 end
 
+get '/stats/' do
+  @round = Round.find(session[:round_id])
+  erb :stats_page
+end
+
 post '/user/new' do
   username = params[:username]
   password = params[:password]
-  User.create({username: username, password: password})
+  user = User.create({username: username, password: password})
+  session[:user_id] = user.id
   redirect to('/')
 end
 
