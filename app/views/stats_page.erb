@@ -1,13 +1,9 @@
-<section>
+<div class='container'>
   <header id="stats_head">
     <h1><%=Deck.find(@round.deck_id).title%> Deck Statistics<h1>
   </header>
   <div id="stats">
     <span> Score: <%= score(@round.correct,@round.incorrect)%>%</span>
-  </div>
-  
-  <div id="average_score">
-    Round.each
   </div>
 
   <div id="wrong_questions">
@@ -22,5 +18,4 @@
     <% end %>
   <% end %>
 
-</section>
-
+</div>
