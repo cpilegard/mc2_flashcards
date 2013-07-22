@@ -67,10 +67,17 @@ post "/deck/:deck_id/:card_id" do
 
   if answer.downcase == card.answer.downcase
     Guess.create({card_id: card.id, round_id: round_id, correct: 1})
+    "Correct!"
   else
     Guess.create({card_id: card.id, round_id: round_id, correct: 0})
+    "Incorrect!"
   end
 
+end
+
+get "/deck/next/:deck_id/:card_id" do
+  deck = Deck.find(params[:deck_id])
+  card = Card.find(params[:card_id])
   if Card.where(deck_id: deck.id).last.id > card.id
     redirect to("/deck/#{deck.id}/#{card.id.to_i + 1}")
   else

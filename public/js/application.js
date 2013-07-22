@@ -1,12 +1,14 @@
 $(document).ready(function() {
-  // $('.start').on('click', function(e) {
-  // 	e.preventDefault();
-  // 	deck_id = $(this).attr('href');
-  // 	$.post('/deck/'+deck_id+'/4', function(data) {
-  // 	}).done(function(response) {
-  // 		$('.start').hide();
-  // 		$('.flashcard').css('visibility', 'visible');
-  // 		$('#question').html(response.question);
-  // 	});
-  // });
+  $('#answer_form').on('submit', function(e){
+    e.preventDefault();
+    $.ajax({
+      url: this.action,
+      type: this.method,
+      data: $('#answer_form').serialize()
+    }).done(function(answer){
+      $('#message').text(answer);
+      $('#submit_guess').hide();
+      $('#answer_checked').slideDown();
+    });
+  });
 });
