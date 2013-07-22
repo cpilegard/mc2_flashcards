@@ -3,12 +3,18 @@
     <h1><%=Deck.find(@round.deck_id).title%> Deck Statistics<h1>
   </header>
   <div id="stats">
-    <span> Score: <%= (@round.correct / (@round.correct + @round.incorrect)) * 100 %> </span>
+    <span> Score: <%= score(@round.correct,@round.incorrect)%>%</span>
   </div>
+  
+  <div id="average_score">
+
+  </div>
+
   <div id="wrong_questions">
+  <h2>Study These: </h2>
   <% Guess.all.each do |guess| %>
     <% if guess.round_id == @round.id %>
-      <% unless guess.correct %>
+      <% unless guess.correct == 1%>
         <% card = Card.find(guess.card_id) %>
         <h3> <%= card.question %> </h3>
         <p> <%= card.answer %> </p>

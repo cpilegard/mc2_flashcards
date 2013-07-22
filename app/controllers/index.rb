@@ -66,7 +66,7 @@ post "/deck/:deck_id/:card_id" do
   deck = Deck.find(params[:deck_id])
   card = Card.find(params[:card_id])
 
-  if answer == card.answer
+  if answer.downcase == card.answer.downcase
     Guess.create({card_id: card.id, round_id: round_id, correct: 1})
   else
     Guess.create({card_id: card.id, round_id: round_id, correct: 0})
