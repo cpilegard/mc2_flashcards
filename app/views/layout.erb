@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href='http://fonts.googleapis.com/css?family=Quintessential' rel='stylesheet' type='text/css'>
+
+  <link href='http://fonts.googleapis.com/css?family=Cinzel:900' rel='stylesheet' type='text/css'>
   <!-- 
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
@@ -17,16 +20,15 @@
 
   <title></title>
 </head>
-<body>
-  <div class='container'>
-    <% if @user %>
-    <a href='/logout'>Log Out (<%= @user.username %>)</a>
-    <% else %>
-    <a href='/user/login'>Log In</a>
-    <br>
-    <a href='/user/signup'>Sign Up</a>
-    <% end %>
-  </div>
-  <%= yield %>
-</body>
+  <body>
+    <nav>
+      <% if @user %>
+      <a href='/logout'>Log Out (<%= @user.username %>)</a>
+      <% else %>
+        <a class="nav_el" href='/user/login'>Log In</a>
+        <a class="nav_el" href='/user/signup'>Sign Up</a>
+      <% end %>
+    </nav>
+    <%= yield %>
+  </body>
 </html>
