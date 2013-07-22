@@ -20,7 +20,8 @@
 <body>
   <div class='container'>
     <% if cur_user %>
-    <a href='/logout'>Log Out (<%= cur_user.username %>)</a>
+    <a href='/logout'>Log Out</a>
+    <a href='/profile'><%= cur_user.username %></a>
     <% else %>
       <a href='/user/login'>Log In</a>
       <br>
