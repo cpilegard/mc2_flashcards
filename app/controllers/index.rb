@@ -14,6 +14,12 @@ get '/user/login' do
   erb :login
 end
 
+get '/profile' do
+  @rounds = Round.where(user_id: cur_user.id)
+
+  erb :profile
+end
+
 
 get '/stats/:round_id' do
   @round = Round.find(params[:round_id])

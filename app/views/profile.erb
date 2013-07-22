@@ -1,0 +1,9 @@
+<div class="container">
+	<h1><%= cur_user.username %>'s profile</h1>
+	<% @rounds.each do |round| %>
+		<h5>Round <%= round.id %> - <%= Deck.find(round.deck_id).title %></h5>
+		<p>Correct: <%= round.correct %></p>
+		<p>Incorrect: <%= round.incorrect %></p>
+		<p>Success: <%= score(round.correct, round.incorrect) %>%</p>
+	<% end %>
+</div>
