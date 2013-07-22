@@ -36,3 +36,8 @@ nav {
   color: #4A0F12;
   text-decoration: underline;
 }
+
+#answer_checked {
+  display: none;
+}
+

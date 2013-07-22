@@ -26,8 +26,9 @@
       <a href='/logout'>Log Out (<%= @user.username %>)</a>
       <% else %>
         <a class="nav_el" href='/user/login'>Log In</a>
-        <a class="nav_el" href='/user/signup'>Sign Up</a>
+        <a class="nav_el" href='/user/signup'>Sign Up</a>]
       <% end %>
+      <a href='/'>Home</a>
     </nav>
     <%= yield %>
   </body>

@@ -1,27 +1,15 @@
 <div class="container">
-  <% unless @gameover %>
-    <h1><%= @card.question %></h1>
-    <form action=<%= '/round/card/' + @card.id.to_s %> method='post'>
-      <input type='text' name='guess'>
-      <input type='submit'>
+  <div class='flashcard'>
+    <p id="question"><%= @card.question %></p>
+    <form id="answer_form" action="/deck/<%= @deck.id.to_s + '/' + @card.id.to_s %>" method='post'>
+      <input type='text' name='answer'>
+      <input id="submit_guess" type='submit' value='check'>
     </form>
-  <% else %>
-    <h3>Game Over</h3>
-  <% end %>
-  <% if @correct %>
-    <p>Correct!</p>
-    <% elsif @correct == false%>
-    <p>WRONG!: <%= @answer %></p>
-  <% end %>
-    <br><br>
-
-  <% if @number_correct %>
-    <p>Correct: <%= @number_correct %></p>
-    <p>Incorrect: <%= @number_incorrect %></p>
-  <% end %>
-
-  <% if @gameover %>
-    <a href='/'>Home</a>
-  <% end %>
+  </div>
+  <div id='answer_checked'>
+    <span id="message"></span>
+    <form id="next" action="/deck/next/<%= @deck.id.to_s + '/' + @card.id.to_s %>" method="get">
+      <input type="submit" value="next">
+    </form>
+  </div>  
 </div>
-
