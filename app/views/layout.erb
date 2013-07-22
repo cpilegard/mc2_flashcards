@@ -4,6 +4,8 @@
   <link href='http://fonts.googleapis.com/css?family=Quintessential' rel='stylesheet' type='text/css'>
 
   <link href='http://fonts.googleapis.com/css?family=Cinzel:900' rel='stylesheet' type='text/css'>
+
+  <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:700' rel='stylesheet' type='text/css'>
   <!-- 
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
@@ -22,13 +24,13 @@
 </head>
   <body>
     <nav>
-      <% if @user %>
-      <a href='/logout'>Log Out (<%= @user.username %>)</a>
+      <% if cur_user %>
+      <a class="nav_el" href='/logout'>Log Out (<%= cur_user.username %>)</a>
       <% else %>
         <a class="nav_el" href='/user/login'>Log In</a>
-        <a class="nav_el" href='/user/signup'>Sign Up</a>]
+        <a class="nav_el" href='/user/signup'>Sign Up</a>
       <% end %>
-      <a href='/'>Home</a>
+      <a class="nav_el" href='/'>Home</a>
     </nav>
     <%= yield %>
   </body>

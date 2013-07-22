@@ -2,7 +2,7 @@
   <div class='flashcard'>
     <p id="question"><%= @card.question %></p>
     <form id="answer_form" action="/deck/<%= @deck.id.to_s + '/' + @card.id.to_s %>" method='post'>
-      <input type='text' name='answer'>
+      <input id="text_guess" type='text' name='answer'>
       <input id="submit_guess" type='submit' value='check'>
     </form>
   </div>

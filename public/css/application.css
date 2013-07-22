@@ -5,12 +5,22 @@ html {
 
 .container {
   margin: 20px auto;
-  width: 600px;
+  width: 80%;
+  text-align: center;
   padding: 0px 20px 20px 20px;
-  font-family: 'Quintessential', cursive;
+  height: 400px;
+  font-family: 'Cinzel Decorative', cursive;
   color: #FCF3CA;
-/*  border: 1px dotted black*/;
 }
+
+.container h1 {
+  font-family: 'Quintessential', cursive;
+  color: #FFB6AC;
+  font-size: 8em;
+  font-weight: bold;
+  text-shadow: 3px 3px 3px rgba(255,255,255,.2);
+}
+
 th {
   text-align: left;
 }
@@ -20,6 +30,7 @@ nav {
   background-color: #FCF3CA;
   font-family: 'Cinzel', serif;
   height: 3.5em;
+  border-bottom: #4A0F12 10px solid;
 /*  color: #FCF3CA;*/
 }
 
@@ -39,5 +50,53 @@ nav {
 
 #answer_checked {
   display: none;
+}
+
+.deck_display {
+  text-decoration: none;
+  color: black;
+  font-size: 2em;
+  display: inline-block;
+  background-color: white;
+  width: 10em;
+  transition: width .5s;
+  padding: .8em;
+  margin-bottom: .2em;
+}
+
+.deck_display:hover {
+  width: 15em;
+  color: white;
+  background-color: grey;
+}
+
+.stats span {
+  float: right;
+  font-size: 10em;
+  color: #FF343E;
+}
+.answer_checked span {
+  font-size: 3em;
+  color: #FF343E;
+}
+
+.flashcard p {
+  font-size: 3em;
+}
+
+#text_guess {
+  font-size: 2em;
+  width: 10em;
+  height: 60px;
+}
+#submit_guess {
+  height: 66px;
+}
+
+.study_these{
+  margin: .2em auto;
+  padding: .01em;
+  background-color: grey;
+  width: 40%;
 }
 
