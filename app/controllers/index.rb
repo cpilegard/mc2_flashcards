@@ -21,23 +21,32 @@ get '/stats/:round_id' do
 end
 
 post '/user/new' do
-  username = params[:username]
-  password = params[:password]
-  user = User.create({username: username, password: password})
+  user = User.new(params[:username])
+  user.password = params[:password]
+  user.save!
+
   session[:user_id] = user.id
   redirect to('/')
 end
 
 post '/user/login' do
-  username = params[:username]
-  password = params[:password]
-  user = User.where(username: username).first
-  if user.password == password
+  user = User.find_by_username(params[:username])
+  if user.password == params[:password]
     session[:user_id] = user.id
+    redirect to('/')
   else
-    "Incorrect login"
+    redirect to('/')
   end
-  redirect to('/')
+
+  # username = params[:username]
+  # password = params[:password]
+  # user = User.where(username: username).first
+  # if user.password == password
+  #   session[:user_id] = user.id
+  # else
+  #   "Incorrect login"
+  # end
+  # redirect to('/')
 end
 
 get '/logout' do
