@@ -5,7 +5,9 @@ Card.create({question: "He signs a capella", answer: "Clint", deck_id: id})
 Card.create({question: "She can pole dance", answer: "Maria", deck_id: id})
 Card.create({question: "Disco Lumberjack", answer: "Cole", deck_id: id})
 
-User.create({username: 'test', password: 'test'})
+user = User.new(username: 'test')
+user.password = 'test'
+user.save!
 
 Deck.create({title: "State Capitals"})
 capitals_id = Deck.where(title: "State Capitals").first.id
