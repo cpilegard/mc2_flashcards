@@ -19,8 +19,8 @@
 </head>
 <body>
   <div class='container'>
-    <% if @user %>
-    <a href='/logout'>Log Out (<%= @user.username %>)</a>
+    <% if cur_user %>
+    <a href='/logout'>Log Out (<%= cur_user.username %>)</a>
     <% else %>
     <a href='/user/login'>Log In</a>
     <br>
