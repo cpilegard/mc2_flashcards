@@ -19,6 +19,7 @@ html {
   font-size: 8em;
   font-weight: bold;
   text-shadow: 3px 3px 3px rgba(255,255,255,.2);
+  padding: .25em;
   margin-bottom: 0px;
 }
 
@@ -80,9 +81,8 @@ nav {
   background-color: grey;
 }
 
-.stats span {
-  float: right;
-  font-size: 10em;
+#stats span {
+  font-size: 8em;
   color: #FF343E;
 }
 .answer_checked span {
@@ -104,9 +104,31 @@ nav {
 }
 
 .study_these{
-  margin: .2em auto;
-  padding: .01em;
+  margin: .4em auto;
+  padding: .15em;
   background-color: grey;
   width: 40%;
 }
+
+.study_these h3 {
+  font-size: 2em;
+  color: black;
+  font-family: 'Cinzel Decorative';
+  margin-bottom: 0;
+}
+.study_these p {
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.stats_links {
+  text-decoration: none;
+  font-size: 1.5em;
+  padding: 2em;
+  color: gray;
+}
+
 

@@ -1,7 +1,7 @@
 <div class="container">
 	<h1><%= cur_user.username %>'s profile</h1>
 	<% @rounds.each do |round| %>
-		<a href='/stats/<%= round.id %>'>Round <%= round.id %> - <%= Deck.find(round.deck_id).title %></a>
+		<a class="stats_links" href='/stats/<%= round.id %>'>Round <%= round.id %> - <%= Deck.find(round.deck_id).title %></a>
 		<ul>
 			<li>Correct: <%= round.correct %></li>
 			<li>Incorrect: <%= round.incorrect %></li>
