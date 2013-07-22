@@ -19,6 +19,16 @@ html {
   font-size: 8em;
   font-weight: bold;
   text-shadow: 3px 3px 3px rgba(255,255,255,.2);
+  margin-bottom: 0px;
+}
+
+.container h3 {
+  font-family: 'Quintessential', cursive;
+  color: #FFB6AC;
+  font-size: 4em;
+  font-weight: bold;
+  text-shadow: 3px 3px 3px rgba(255,255,255,.2);
+  margin-top: 0px;
 }
 
 th {

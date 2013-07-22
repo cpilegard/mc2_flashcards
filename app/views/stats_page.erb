@@ -1,6 +1,7 @@
 <div class='container'>
   <header id="stats_head">
-    <h1><%=Deck.find(@round.deck_id).title%> Deck Statistics<h1>
+    <h1><%=Deck.find(@round.deck_id).title%></h1>
+    <h3>Round Statistics</h3>
   </header>
   <div id="stats">
     <span><%= score(@round.correct,@round.incorrect)%>%</span>
