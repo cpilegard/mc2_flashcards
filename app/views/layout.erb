@@ -24,13 +24,14 @@
 </head>
   <body>
     <nav>
+      <a class="nav_el" href='/'>Home</a>
       <% if cur_user %>
-      <a class="nav_el" href='/logout'>Log Out (<%= cur_user.username %>)</a>
+      <a class="nav_el" href='/profile'><%= cur_user.username %>'s Profile</a>
+      <a class="nav_el" href='/logout'>Log Out</a>
       <% else %>
         <a class="nav_el" href='/user/login'>Log In</a>
         <a class="nav_el" href='/user/signup'>Sign Up</a>
       <% end %>
-      <a class="nav_el" href='/'>Home</a>
     </nav>
     <%= yield %>
   </body>
