@@ -41,3 +41,10 @@ nav {
   display: none;
 }
 
+.deck {
+  font-size: 2em;
+  text-decoration: none;
+  color: #FCF3CA;
+  font-family: 'Cinzel', serif;
+}
+
